@@ -1,31 +1,24 @@
 buildscript {
-
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        /**
-         * joobyRun
-         */
         classpath 'com.google.gradle:osdetector-gradle-plugin:1.6.2'
         classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
         classpath 'org.jooby:jooby-gradle-plugin:1.6.0'
     }
 }
 
-/* * We are writing a standalone application. */
 apply plugin: "io.spring.dependency-management"
 apply plugin: "com.google.osdetector"
 apply plugin: 'application'
 apply plugin: 'jooby'
 
-/* * Some classic project configuration. */
 version = 0.1
 mainClassName = "hi.jooby.App"
 sourceCompatibility = 1.8
 
-/* * Dependencies will be downloaded from the Maven repository. */
 repositories {
     mavenLocal()
     mavenCentral()
@@ -37,7 +30,6 @@ dependencyManagement {
     }
 }
 
-/* * A minimal project needs the framework and a webserver. */
 dependencies {
     compile 'org.jooby:jooby:1.6.0'
     compile 'org.jooby:jooby-netty:1.6.0'
@@ -50,7 +42,6 @@ dependencies {
     testCompile 'io.rest-assured:rest-assured:3.3.0'
 }
 
-/* * We diverge from the default resources structure to adopt the Jooby standard. */
 sourceSets.main.resources {
     srcDirs = ['conf', 'public']
 }
